@@ -11,7 +11,7 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/predict-digit", methods=["POST", "GET"])
+@app.route("/predict-digit", methods=["POST"])
 def predict_digit():
     image = request.get_json(silent=True)['image'].split(",")[1]
     image_data = base64.urlsafe_b64decode(image)
@@ -20,7 +20,7 @@ def predict_digit():
 
     response = {
         "prediction": str(prediction),
-        "confidence": str(confidence)
+
     }
 
     return jsonify(response)

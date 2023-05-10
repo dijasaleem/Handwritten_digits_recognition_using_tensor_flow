@@ -18,13 +18,6 @@ def model_predict(img):
     return output_data.argmax(), output_data[0][output_data.argmax()]
 
 
-def preprocess_image(image, img_type="file"):
-    if img_type == "file":
-        return (image.reshape(1, 28, 28, 1) / 255.).astype(np.float32)
-    elif img_type == "df_row":
-        return (image.to_numpy().reshape(1, 28, 28, 1) / 255.).astype(np.float32)
-
-
 def predict(image_data):
     # Import image
     image = Image.open(io.BytesIO(image_data))
