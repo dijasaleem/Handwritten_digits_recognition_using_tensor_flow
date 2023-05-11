@@ -10,6 +10,10 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    return 'OK', 200
+
 
 @app.route("/predict-digit", methods=["POST"])
 def predict_digit():
